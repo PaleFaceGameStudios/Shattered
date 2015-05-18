@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IISObject : MonoBehaviour {
+public interface IISObject {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	//name
+	//value - gold value
+	//icon
+	//burden
+	//qualityLevel
+	string ISName { get; set; }
+	int ISValue { get; set; }
+	Sprite ISIcon { get; set; }
+	int ISBurden { get; set; }
+
+
+	//equip
+	//questItem flag
+	//durability
+	//takedamage
 }
