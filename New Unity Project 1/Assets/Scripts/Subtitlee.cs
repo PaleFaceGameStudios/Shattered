@@ -2,13 +2,18 @@
 using System.Collections;
 using UnityEngine.UI;
 public class Subtitlee : MonoBehaviour {
+	public string text;
 	public Text Speech;
 	// Use this for initialization
 
 
 void OnTriggerEnter( Collider Other){
-	Speech.text = "This place.. Where Am I?";
+	Speech.text = text;
 }
-	// Update is called once per frame
+
+	void OnTriggerExit(Collider Other){
+		Speech.text = null;
+	}
+	
 
 }
