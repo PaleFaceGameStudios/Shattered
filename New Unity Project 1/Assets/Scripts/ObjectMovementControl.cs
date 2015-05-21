@@ -49,7 +49,7 @@ public class ObjectMovementControl : MonoBehaviour {
 				}
 				neg = true;
 				transform.Translate (Vector3.down * Time.deltaTime, Space.World);
-				transform.Rotate (new Vector3 (15, 15, 15) * Time.deltaTime);
+				transform.Rotate (new Vector3 (x_rotate, y_rotate, z_rotate) * Time.deltaTime);
 			}
 		}
 	}
