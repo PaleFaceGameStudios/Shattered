@@ -15,8 +15,9 @@ namespace Game.ItemSystem{
 	}
 
 		void DisplayQualities(){
-			for (int cnt = 0; cnt < QualityDatabase.Count(); cnt++) {
 
+			for (int cnt = 0; cnt < QualityDatabase.Count(); cnt++) {
+				GUILayout.BeginHorizontal ("Box");
 				//sprite
 				if(QualityDatabase.Get(cnt).Icon)
 				selectedTexture = QualityDatabase.Get(cnt).Icon.texture;
@@ -39,11 +40,11 @@ namespace Game.ItemSystem{
 				}
 
 
-
+				GUILayout.BeginVertical();
 				//name
 				QualityDatabase.Get(cnt).Name = GUILayout.TextField( QualityDatabase.Get(cnt).Name);
 				//delete
-				if(GUILayout.Button("x")){
+				if(GUILayout.Button("x",GUILayout.Width(30),GUILayout.Height(25))){
 					if(EditorUtility.DisplayDialog("Delete",
 					                               "Are you sure that you want to delete " +QualityDatabase.Get(cnt).Name + " from the database?",
 					                               "Much yes", 
@@ -51,7 +52,10 @@ namespace Game.ItemSystem{
 						QualityDatabase.Remove(cnt);
 					}
 				}
+				GUILayout.EndVertical();
+				GUILayout.EndHorizontal ();
 			}
+
 		}
 	}
 }

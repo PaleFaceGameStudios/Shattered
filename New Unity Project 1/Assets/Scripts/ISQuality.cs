@@ -15,7 +15,10 @@ public class ISQuality : IISQuality {
 		_name = "";
 	}
 
-
+		public ISQuality(string name, Sprite icon){
+			_name = name;
+			_icon = icon;
+		}
 
 	public string Name {
 
