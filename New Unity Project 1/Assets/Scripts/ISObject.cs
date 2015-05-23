@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace Game.ItemSystem{
 public class ISObject : IISObject {
 	[SerializeField]Sprite _icon;
 	[SerializeField]string _name;
@@ -59,3 +59,4 @@ public class ISObject : IISObject {
 
 	}
 
+}

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+namespace Game.ItemSystem{
 public interface IISObject {
 	string ISName { get; set; }
 	int ISValue { get; set; }
@@ -12,4 +12,6 @@ public interface IISObject {
 	//questItem flag
 	//durability
 	//takedamage
+	//prefabs
+}
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+namespace Game.ItemSystem{
 
+	[System.Serializable]
 public class ISQuality : IISQuality {
 	#region IISQuality implementation
 	[SerializeField]string _name;
@@ -8,9 +10,9 @@ public class ISQuality : IISQuality {
 
 
 
-	ISQuality(){
+	public ISQuality(){
 		_icon = new Sprite ();
-		_name = "common";
+		_name = "";
 	}
 
 
@@ -33,4 +35,5 @@ public class ISQuality : IISQuality {
 
 
 
+}
 }
