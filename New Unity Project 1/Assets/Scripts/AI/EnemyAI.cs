@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour {
 	public Transform target;
 	public float moveSpeed;
 	public float rotSpeed;
+	public float StopRange;
 
 	Transform myTransform;
 
@@ -31,6 +32,11 @@ public class EnemyAI : MonoBehaviour {
 
 
 		//move
+		float distance  = Vector3.Distance (target.transform.position, transform.position);
+		
+		Vector3 dir = (target.transform.position - transform.position).normalized;
+		float direction = Vector3.Dot (dir, transform.forward);
+		if (distance > StopRange)
 		transform.Translate (Vector3.forward * moveSpeed *Time.deltaTime);
 	}
 }

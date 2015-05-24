@@ -6,8 +6,7 @@ public class EnemyHealth : MonoBehaviour {
 	
 	public float maxHealth = 100;
 	public float curHealth= 100;
-	public GameObject Object;
-	
+
 	public float healthBarLength;
 	// Use this for initialization
 	void Start () {
@@ -17,7 +16,7 @@ public class EnemyHealth : MonoBehaviour {
 	void Update () {
 		//Debug.Log ("cuHealth: " + curHealth);
 		if (curHealth <= 0f)
-			Destroy (Object);
+			Destroy (gameObject);
 		if (curHealth >= maxHealth)
 			curHealth = maxHealth;
 	}
