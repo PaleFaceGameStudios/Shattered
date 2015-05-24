@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class takeDamage : MonoBehaviour {
-	public VitalBar healthBar;
+	public PlayerHealth health;
 	public float Damage = 0f;
 	public float DamageRate = 0f;
 	public bool Knockback;
@@ -19,7 +19,7 @@ public class takeDamage : MonoBehaviour {
 	}
 
 	void Start(){
-		healthBar = FindObjectOfType (typeof(VitalBar)) as VitalBar;
+		health = FindObjectOfType (typeof(PlayerHealth)) as PlayerHealth;
 
 		//player = GameObject.FindWithTag ("Player");
 	}
@@ -32,7 +32,7 @@ public class takeDamage : MonoBehaviour {
 		direction = Camera.main.transform.forward - Camera.main.transform.forward * 2;
 		//Debug.Log("Showing takeDamage, this script is working!");
 		if (lastDamage >= DamageRate) {
-			healthBar.AdjustScale (Damage / 100);
+			health.RemoveCurrentHealth(Damage);
 			if(Knockback)
 			AddImpact (direction, 10f);
 			if (impact.magnitude > 0.2F)
