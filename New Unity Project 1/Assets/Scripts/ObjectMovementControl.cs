@@ -46,10 +46,7 @@ public class ObjectMovementControl : MonoBehaviour {
 				Rotate();
 			}
 			//timer.text = timeLeft.ToString ();
-
-
-
 		}
 
-	}}
+	}
 		
