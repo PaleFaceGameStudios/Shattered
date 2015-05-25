@@ -80,12 +80,7 @@ public class ObjectMovementControl : MonoBehaviour {
 				Rotate();
 			}
 			//timer.text = timeLeft.ToString ();
-<<<<<<< HEAD
 
-		 
-
-=======
->>>>>>> origin/master
 		}
 
 	}
