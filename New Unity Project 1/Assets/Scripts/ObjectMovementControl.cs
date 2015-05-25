@@ -2,56 +2,69 @@
 using System.Collections;
 using UnityEngine.UI;
 public class ObjectMovementControl : MonoBehaviour {
-	public Text timer;
 	public bool Reverse = false;
-	public float timeLeft = 15f;
+
 	public int x_rotate;
 	public int y_rotate;
 	public int z_rotate;
-	float _timeLeft;
-	bool neg = false;
-	
-	
+
+	public bool move;
+
+	public int x_move;
+	public int y_move;
+	public int z_move;
+
+	public int XmoveHowFar;
+	public int YmoveHowFar;
+	public int ZmoveHowFar;
+
+	public Text test;
+
+	public int choiceOfSeconds;
+
+
+
+	public int timer = 0;
+	void Rotate()
+	{
+		transform.Rotate (new Vector3 (x_rotate, y_rotate, z_rotate) * Time.deltaTime);
+	}
+
+	void Move()
+	{
+		transform.Translate(new Vector3(x_move,y_move,z_move) * Time.deltaTime,  Space.World);
+	}
 	
 	void Start (){
-		_timeLeft = timeLeft;
+
+		timer = 0;
 	}
 	// Update is called once per frame
-	void Update () {
-		timer.text = timeLeft.ToString ();
-		timeLeft -= Time.deltaTime;
+	void Update () 
+	{
+
+
+
+		if (move && timer <= choiceOfSeconds) 
+		{
+			timer += 1;
+			Move ();
+			Rotate ();
+		}
+		else if (move && timer >= choiceOfSeconds) 
+		{
+			x_move = x_move * -1;
+			timer += 1;
+			Move ();
+			Rotate ();
+		}
+		else
+		{
+			Rotate();
+		}
+		//timer.text = timeLeft.ToString ();
+
 		
-		if (Reverse) {
-			if (timeLeft <= _timeLeft) {
-				neg = false;
-			}
-			if (timeLeft > 0f && timeLeft <= _timeLeft && neg == false) {
-				transform.Translate (Vector3.down * Time.deltaTime, Space.World);
-				transform.Rotate (new Vector3 (x_rotate, y_rotate, z_rotate) * Time.deltaTime);
-			} else {
-				if (neg == false) {
-					timeLeft = _timeLeft*2;
-				}
-				neg = true;
-				transform.Translate (Vector3.up * Time.deltaTime, Space.World);
-				transform.Rotate (new Vector3 (x_rotate, y_rotate, z_rotate) * Time.deltaTime);
-			}
-		} else {
-			if (timeLeft <= _timeLeft) {
-				neg = false;
-			}
-			if (timeLeft > 0f && timeLeft <= _timeLeft && neg == false) {
-				transform.Translate (Vector3.up * Time.deltaTime, Space.World);
-				transform.Rotate (new Vector3 (x_rotate, y_rotate, z_rotate) * Time.deltaTime);
-			} else {
-				if (neg == false) {
-					timeLeft = _timeLeft*2;
-				}
-				neg = true;
-				transform.Translate (Vector3.down * Time.deltaTime, Space.World);
-				transform.Rotate (new Vector3 (x_rotate, y_rotate, z_rotate) * Time.deltaTime);
+
 			}
 		}
-	}
-	
-}

@@ -3,17 +3,44 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Subtitles : MonoBehaviour {
-	public Text countText;
+	public string text;
+	public Text Speech;
+	public int DisplayTime;
+	double Timer = 0.0f;
+	public Text test;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+
 	
 	}
-	void OnTriggerEnter( Collider Other){
-		countText.text = "I wonder where these platforms will take me";
+	void OnTriggerEnter( Collider Other)
+	{
+
+
+		if (Timer <= DisplayTime) {
+
+		}
+		else {
+			Speech.text = text;
+			
+			Timer += Time.deltaTime;
+			test.text = Timer.ToString ();
+		}
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
 	}
+	void OnTriggerExit(Collider Other)
+	{
+
+
+
+	}
+
 }
