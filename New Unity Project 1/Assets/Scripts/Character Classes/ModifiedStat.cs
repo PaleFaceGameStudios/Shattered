@@ -13,11 +13,11 @@ public class ModifiedStat : BaseStat {
 	public void AddModifier(ModifyingAttribute mod){
 		_mods.Add (mod);
 	}
-
 	void CalculateModValue(){
-		if(_mods.Count > 0)
-			foreach(ModifyingAttribute att in _mods);
-			//_modValue += att.att
+		if (_mods.Count > 0)
+			foreach (ModifyingAttribute att in _mods) {
+//				_modValue += (int)(att.attribute.AdjustedBaseValue * att.ratio);
+			}
 	}
 
 }
