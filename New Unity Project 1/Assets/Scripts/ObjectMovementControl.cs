@@ -7,13 +7,14 @@ public class ObjectMovementControl : MonoBehaviour {
 	public Vector3 CustomOrbitAxis;
 	public bool Orbit;
 	public bool move;
+	public bool rotate;
 	public bool Reverse;
 
 	//public Text test;
 
 	//timer
 	public int choiceOfSeconds;
-	public int timer = 0;
+	public float timer = 0;
 
 	//public vectors for orbit
 	public float OrbitSpeed = 50f;
@@ -22,6 +23,9 @@ public class ObjectMovementControl : MonoBehaviour {
 	//private vectors used for orbit
 	Vector3 oldPos;
 	Vector3	distance;
+
+	//in state of reversing?
+	bool revState = false;
 
 
 	void Start(){
@@ -35,49 +39,61 @@ public class ObjectMovementControl : MonoBehaviour {
 	}
 
 
-	void Rotate()
+
+	void Rotate(Vector3 Axis)
 	{
-		transform.Rotate (RotateAxis * Time.deltaTime);
-	}
-	void Move()
-	{
-		transform.Translate(MoveAxis * Time.deltaTime,  Space.World);
+		transform.Rotate (Axis * Time.deltaTime);
 	}
 
-
+	void Move(Vector3 Axis)
+	{
+		transform.Translate(Axis * Time.deltaTime,  Space.World);
+	}
+	
 	//aka orbit
 	void InfinteMove(){
 		//Orbits around its original position
 		transform.RotateAround(oldPos, CustomOrbitAxis, OrbitSpeed * Time.deltaTime);
 	}
+
+	Vector3 reverse(Vector3 reversed){
+		return reversed -= reversed * 2;
+	}
+
 		void Update () 
 		{
-
-		if (move && timer <= choiceOfSeconds) 
+		if (timer >= choiceOfSeconds) {
+			revState ^= true;
+			timer = 0f;
+		}
+		if (move && timer <= choiceOfSeconds && !revState) 
 			{
-
+			//Rotate if rotate is selected
+			if(rotate)
+				Rotate (RotateAxis);
 			// if set to orbit, orbit object around selected xyz axis
 			if(Orbit)
 				InfinteMove ();
 
 			//move normaly xyz axis(no orbit)
 			else{
-				Move();
-				timer += 1;
+				Move(MoveAxis);
+				timer += Time.deltaTime;
 			}
 
-			Rotate ();
 			}
-			else if (move && timer >= choiceOfSeconds) 
+			else if (rotate && timer <= choiceOfSeconds && revState) 
 			{
 //				x_move = x_move * -1;
-				timer += 1;
-				Move ();
-				Rotate ();
+				timer += Time.deltaTime;
+				Move (reverse(MoveAxis));
+			if(rotate)
+				Rotate (reverse(RotateAxis));
 			}
 			else
 			{
-				Rotate();
+			if(rotate)
+				Rotate(RotateAxis);
 			}
 			//timer.text = timeLeft.ToString ();
 
