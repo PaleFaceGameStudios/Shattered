@@ -5,34 +5,28 @@ using UnityEngine.UI;
 public class Subtitles : MonoBehaviour {
 	public string text;
 	public Text Speech;
-	public int DisplayTime;
-	double Timer = 0.0f;
-	public Text test;
+	public float DisplayTime;
+	float timer = 0.0f;
+	//public Text test;
 	
 	// Use this for initialization
-	void Start () 
+	void StartTimer () 
 	{
-		
-		
-	}
-	void OnTriggerEnter( Collider Other)
-	{
-		if (Timer <= DisplayTime) {
+		timer += Time.deltaTime;
+		if (timer >= DisplayTime)
 			Speech.text = null;
-		}
-		else {
+	}
+	void OnTriggerEnter( Collider Other){
+		Speech.text = text;
+
+		if (timer >= DisplayTime)
 			Speech.text = text;
-			
-			Timer += Time.deltaTime;
-			
-		}
-		
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		StartTimer ();
 	}
 	void OnTriggerExit(Collider Other)
 	{

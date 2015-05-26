@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		GUI.TextField(new Rect(0,30,30,20), curHealth.ToString());
+		GUI.Box(new Rect(0,30,30,20), curHealth.ToString());
 		//GUI.TextField
 	}
 }

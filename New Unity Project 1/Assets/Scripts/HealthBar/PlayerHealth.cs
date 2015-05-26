@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		GUI.TextField(new Rect(0,0,30,20), curHealth.ToString());
+		GUI.Box(new Rect(0,0,30,20), curHealth.ToString());
 		//GUI.TextField
 	}
 }
