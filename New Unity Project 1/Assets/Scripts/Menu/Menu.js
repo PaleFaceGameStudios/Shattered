@@ -1,13 +1,13 @@
 ﻿var quit = false;
+ var myClip : AudioClip ;
 
 function OnMouseEnter()
 {
- GetComponent.<Renderer>().materal.color = Color.red;
+GetComponent.<AudioSource>().Play();
 }
 
 function OnMouseExit()
 {
- GetComponent.<Renderer>().materal.color = Color.white;
 }
 
 function OnMouseUp(){
